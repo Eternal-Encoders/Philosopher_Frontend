@@ -1,0 +1,9 @@
+.Message {
+  padding: 12px 16px;
+  min-height: 43px;
+  min-width: 80px;
+  background: var(--color-bg-message);
+  border-radius: 8px;
+  color: var(--color-text-message);
+  align-self: flex-end;
+}
