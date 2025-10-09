@@ -2,15 +2,14 @@
 import classNames from 'classnames';
 import { useTheme } from './providers/ThemeProvider/lib/useTheme';
 import './styles/index.scss';
+import { Chat } from 'widgets/Chat';
 
 function App() {
   const {theme} = useTheme();
 
   return (
     <div className={classNames('app', theme)}>
-      <h1>
-        Симулятор дилемм
-      </h1>
+      <Chat className='chat' />
     </div>
   );
 }
