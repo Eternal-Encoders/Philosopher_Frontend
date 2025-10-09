@@ -45,7 +45,7 @@ export default defineConfig([
       '@stylistic/jsx-max-props-per-line': "warn",
       '@stylistic/jsx-one-expression-per-line': "warn",
       '@stylistic/jsx-pascal-case': "error",
-      '@stylistic/jsx-props-no-multi-spaces': "warn",
+      '@stylistic/no-multi-spaces': "warn",
       '@stylistic/jsx-quotes': ["warn", "prefer-single"],
       '@stylistic/jsx-self-closing-comp': "warn",
       '@stylistic/jsx-sort-props': ["warn", { "shorthandFirst": true, "callbacksLast": true, "multiline": "last" }],

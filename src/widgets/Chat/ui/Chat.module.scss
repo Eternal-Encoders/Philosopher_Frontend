@@ -1,0 +1,24 @@
+.Chat {
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: center;
+  width: 65%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  row-gap: 24px;
+
+  &__input {
+    position: absolute;
+    bottom: 32px;
+    width: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-bg-message);
+    height: 52px;
+    border-radius: 8px;
+    padding: 10px 16px;
+  }
+}
