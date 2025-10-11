@@ -25,10 +25,16 @@ jobs:
     strategy:
       matrix:
         node-version: [24.x]
+        pnpm-version: [10.x]
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ matrix.pnpm-version }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -55,7 +61,7 @@ jobs:
       - name: Upload production-ready files
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist # ← поменяй на твою папку билда (например, "build" для CRA)
+          path: ./dist
 
   deploy:
     needs: build
