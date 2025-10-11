@@ -4,6 +4,8 @@ on:
   push:
     branches: 
       - main
+    paths: 
+      - 'src/**'
   pull_request:
     branches:
       - main
@@ -54,7 +56,13 @@ jobs:
         run: pnpm install --prefer-offline --frozen-lockfile
 
       - name: Build project
-        run: pnpm run build
+        run: pnpm build
+
+      - name: Linting TypeScript
+        run: pnpm lint:ts
+
+      - name: Linting SCSS
+        run: pnpm lint:scss
 
       - name: Upload production-ready files
         uses: actions/upload-pages-artifact@v3
