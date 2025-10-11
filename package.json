@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "type": "module",
   "engines": {
-    "node": "22",
-    "pnpm": "10"
+    "node": ">=22 <30",
+    "pnpm": ">=10 <20"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
