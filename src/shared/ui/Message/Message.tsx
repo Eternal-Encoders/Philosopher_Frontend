@@ -3,12 +3,13 @@ import cls from './Message.module.scss';
 
 interface IMessageProps {
   className?: string;
+  value: string;
 }
 
-export const Message = ({ className }: IMessageProps) => {
+export const Message = ({ className, value}: IMessageProps) => {
   return (
     <span className={classNames(cls.Message, {}, [className])}>
-      Чем отличается мировоззрение от идеологии?
+      {value}
     </span>
   );
 };

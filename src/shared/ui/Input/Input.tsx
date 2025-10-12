@@ -39,7 +39,9 @@ export const Input = (props: IInputProps) => {
         value={value}
         onChange={onChangeHandle}
       />
-      <i className={classNames(cls.Icon)} />
+      <button type='submit'>
+        <i className={classNames(cls.Icon)} />
+      </button>
     </div>
   );
 };
