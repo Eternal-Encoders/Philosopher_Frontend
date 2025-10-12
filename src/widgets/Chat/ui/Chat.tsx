@@ -37,10 +37,11 @@ export const Chat = ({ className }: IChatProps) => {
     setValue(value);
   }, []);
 
-  const handleSubmit = (obj: FormInterface) => {
+  const handleSubmit = (form: FormInterface) => {
+    if (form.question.length <= 0) return;
     const rawQuestion: IUserQuestion = {
       id: getUniqId(),
-      message: obj.question,
+      message: form.question,
       createdAt: new Date(),
       updatedAt: null,
     };

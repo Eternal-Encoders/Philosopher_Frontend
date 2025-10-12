@@ -27,7 +27,7 @@ export const Form = (props: IFormProps) => {
     const formData = new FormData(event.currentTarget);
     const formObj: FormInterface = {};
     for (const [key, value] of Array.from(formData.entries())) {
-      formObj[key] = value.toString();
+      formObj[key] = value.toString().trim();
     }
     onSubmit?.(formObj);
   }, [onSubmit]);
