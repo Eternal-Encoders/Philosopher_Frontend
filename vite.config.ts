@@ -10,6 +10,6 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   base: basePath,
   optimizeDeps: {
-    disabled: true,
+    disabled: false,
   }
 });
