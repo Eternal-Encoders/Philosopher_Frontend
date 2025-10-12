@@ -1,31 +1,41 @@
 .InputWrapper {
-  display: inline-flex; 
-  padding-right: 50px; /* место для иконки */
-}
+  display: inline-flex;
 
-.Input {
-  position: relative;
-  color: #fff;
-  caret-color: #fff;
-  outline: none;
-  width: 100%;
+  .Input {
+    position: relative;
+    color: #fff;
+    caret-color: #fff;
+    outline: none;
+    width: 100%;
 
-  &::placeholder {
-    color: rgba(#fff, 0.6);
+    &::placeholder {
+      color: rgba(#fff, 0.6);
+    }
   }
-}
 
-.Icon {
-  position: absolute; /* Поместите иконку над элементом */
-  right: 10px; /* Отступ справа */
-  top: 50%;
-  transform: translateY(-50%); /* Центрируйте иконку по вертикали */
-  color: #999; /* Цвет иконки */
-  background-image: url('../../assets/Send.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 22px;
-  height: 18px;
-  padding: 18px 17px;
-  cursor: pointer;
+  .Icon {
+    position: absolute;
+    /* Поместите иконку над элементом */
+    right: 10px;
+    /* Отступ справа */
+    top: 50%;
+    transform: translateY(-50%);
+    /* Центрируйте иконку по вертикали */
+    color: #999;
+    /* Цвет иконки */
+    background-image: url('../../assets/Send.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+
+  &.small {
+    padding-right: 50px;
+
+    .Icon {
+      width: 22px;
+      height: 18px;
+      padding: 18px 17px;
+    }
+  }
 }
