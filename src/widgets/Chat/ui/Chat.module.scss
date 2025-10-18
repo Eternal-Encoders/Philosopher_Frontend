@@ -6,7 +6,7 @@
   width: 65%;
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding-top: 16px;
 
   &__messages {
     display: flex;
@@ -24,7 +24,7 @@
   &__input {
     position: absolute;
     bottom: 32px;
-    width: 63%;
+    width: 65%;
     left: 50%;
     transform: translateX(-50%);
     background: var(--color-bg-message);
