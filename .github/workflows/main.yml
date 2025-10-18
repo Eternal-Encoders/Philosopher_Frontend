@@ -6,10 +6,21 @@ on:
       - main
     paths: 
       - 'src/**'
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   build:
-    name: Build
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -59,7 +70,6 @@ jobs:
           path: ./dist
 
   deploy:
-    name: Deploy
     needs: build
     environment:
       name: github-pages
