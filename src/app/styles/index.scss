@@ -8,8 +8,22 @@
   min-height: 100dvh;
   background: var(--color-bg-1);
   color: #fff;
+  display: flex;
+  padding: 16px;
+}
+
+.container {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border: 0.5px solid var(--color-border-primary);
+  border-radius: 8px;
+  background: var(--color-bg-secondary);
 }
 
 .chat {
-  height: 95dvh;
+  height: 92dvh;
+}
+
+.navigationBar {
+  margin-right: 8px;
 }

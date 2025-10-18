@@ -1,0 +1,56 @@
+.NavigationBar {
+  background: var(--color-bg-primary);
+  min-width: var(--navbar-width);
+ 
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 2px;
+  }
+
+  &__button {
+    font-size: 24px;
+    color: rgba(var(--color-text-message-primary), 0.8);
+    border-radius: 100px;
+    margin-bottom: 48px;
+
+    &:hover {
+      color: rgba(var(--color-text-message-primary), 1);
+    }
+  }
+  
+  &__list {
+    row-gap: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__button,
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    background: var(--color-bg-message-primary);
+  }
+
+  &__icon {
+    border-radius: 8px;
+  }
+
+  &__span {
+    font: var(--font-span);
+    margin-top: 5px;
+  }
+}

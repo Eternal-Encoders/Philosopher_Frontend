@@ -1,15 +1,19 @@
 // import reactLogo from './assets/react.svg'
 import classNames from 'classnames';
+import { Chat } from 'widgets/Chat';
+import { NavigationBar } from 'widgets/NavigationBar';
 import { useTheme } from './providers/ThemeProvider/lib/useTheme';
 import './styles/index.scss';
-import { Chat } from 'widgets/Chat';
 
 function App() {
   const {theme} = useTheme();
 
   return (
     <div className={classNames('app', theme)}>
-      <Chat className='chat' />
+      <NavigationBar className='navigationBar' />
+      <div className='container'>
+        <Chat className='chat' />
+      </div>
     </div>
   );
 }

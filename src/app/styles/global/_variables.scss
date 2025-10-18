@@ -5,6 +5,12 @@
   --font-family-medium: 'GolosUIWebMedium', sans-serif;
   --font-family-bold: 'GolosUIWebBold', sans-serif;
 
+  //Span
+  --font-span-font-size: 0.875rem;
+  --font-span-line-height: 1.0625rem;
+  --font-span-weight: 400;
+  --font-span: var(--font-span-weight) var(--font-span-font-size) / var(--font-span-line-height) var(--font-family-regular);
+
   //Regular
   --font-regular-font-size: 1rem;
   --font-regular-line-height: 1.375rem;
@@ -29,7 +35,7 @@
   --color-bg-secondary: #212121;
   --color-border-primary: #575757;
   --color-bg-message-primary: #2B2B2B;
-  --color-text-message-primary: #fff;
+  --color-text-message-primary: 255, 255, 255;
 
   //LightTheme
   --color-bg-primary-inverted: #d3c5c5;
@@ -37,4 +43,11 @@
   --color-border-primary-inverted: #575757;
   --color-bg-message-primary-inverted: #969393;
   --color-text-message-primary-inverted: #000;
+
+  //Constants
+  --app-padding-left: 8px;
+  --navbar-width: 84px;
+  --navbar-margin-right: 8px;
+  --app-padding-right: 16px;
+  --offset-container: calc(var(--app-padding-left) + var(--navbar-width) + var(--navbar-margin-right) + var(--app-padding-right));
 }
