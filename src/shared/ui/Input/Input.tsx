@@ -10,6 +10,7 @@ interface IInputProps extends HTMLInputProps {
   value?: string;
   placeholder?: string;
   onChange?: (value: string) => void;
+  bottom?: string;
 }
 
 export const Input = (props: IInputProps) => {
@@ -19,6 +20,7 @@ export const Input = (props: IInputProps) => {
     value,
     placeholder,
     onChange,
+    bottom = '-8px',
     ...otherProps
   } = props;
 
@@ -31,7 +33,10 @@ export const Input = (props: IInputProps) => {
   };
 
   return (
-    <div className={classNames(cls.InputWrapper, [className], mods)}>
+    <div
+      className={classNames(cls.InputWrapper, [className], mods)}
+      style={{bottom}}
+    >
       <input
         {...otherProps}
         className={classNames(cls.Input)}

@@ -1,3 +1,22 @@
 .Book {
-  
+
+  &__container {
+    display: flex;
+  }
+
+  &__navigation {
+    min-width: 250px;
+    max-width: 350px;
+  }
+
+  &__content {
+    min-width: 400px;
+    max-width: 550px;
+    height: 92dvh;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }

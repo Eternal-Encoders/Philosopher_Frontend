@@ -1,9 +1,9 @@
 import { Book } from 'pages/Book';
 import { Cards } from 'pages/Cards';
+import { Chat } from 'pages/Chat';
 import { NotFound } from 'pages/NotFound';
 import { Persons } from 'pages/Persons';
 import type { RouteProps } from 'react-router';
-import { Chat } from 'widgets/Chat';
 
 enum AppRoutes {
   CHAT = 'chat',

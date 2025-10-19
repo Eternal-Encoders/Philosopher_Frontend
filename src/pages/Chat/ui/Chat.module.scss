@@ -1,3 +1,42 @@
 .Chat {
-  
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border: 0.5px solid var(--color-border-primary);
+  border-radius: 8px;
+  background: var(--color-bg-secondary);
+
+  &__container {
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  &__messages {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    overflow-y: auto;
+    padding-bottom: 62px;
+    z-index: 0;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__input {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: var(--color-bg-message);
+    height: 52px;
+    border-radius: 8px;
+    padding: 10px 16px;
+    box-shadow: 0px 4px 12px 0px #0000001a, inset 0px 0px 1px 0px #fff3;
+    z-index: 1;
+  }
 }

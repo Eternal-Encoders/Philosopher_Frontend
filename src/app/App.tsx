@@ -11,9 +11,7 @@ function App() {
   return (
     <div className={classNames('app', theme)}>
       <NavigationBar className='navigationBar' />
-      <div className='container'>
-        <AppRouter />
-      </div>
+      <AppRouter />
     </div>
   );
 }
