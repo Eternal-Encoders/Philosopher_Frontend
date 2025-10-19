@@ -11,6 +11,7 @@
     "paths": {
       "App/*": ["./src/app/App.tsx"],
       "app/*": ["./src/app/*"],
+      "pages/*": ["./src/pages/*"],
       "widgets/*": ["./src/widgets/*"],
       "shared/*": ["./src/shared/*"]
     },

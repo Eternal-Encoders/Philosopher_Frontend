@@ -1,15 +1,15 @@
-import { SectionProvider } from 'app/providers/SectionProvider';
+import App from 'App/*';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './app/App.tsx';
+import { BrowserRouter } from 'react-router';
 import { ThemeProvider } from './app/providers/ThemeProvider';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <SectionProvider>
-      <ThemeProvider>
+    <ThemeProvider>
+      <BrowserRouter>
         <App />
-      </ThemeProvider>
-    </SectionProvider>
+      </BrowserRouter>
+    </ThemeProvider>
   </StrictMode>,
 );

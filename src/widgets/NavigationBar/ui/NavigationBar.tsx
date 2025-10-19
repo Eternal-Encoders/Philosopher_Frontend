@@ -1,8 +1,8 @@
 //unlimit max-len cause of inline-svg
 /* eslint-disable @stylistic/max-len */
-import { useSection } from 'app/providers/SectionProvider';
-import { ESection } from 'app/providers/SectionProvider/lib/SectionContext';
+import { RoutePath } from 'app/providers/RouterProvider';
 import classNames from 'classnames';
+import { useNavigate } from 'react-router';
 import cls from './NavigationBar.module.scss';
 
 interface INavigationBarProps {
@@ -10,7 +10,8 @@ interface INavigationBarProps {
 }
 
 export const NavigationBar = ({ className }: INavigationBarProps) => {
-  const {section, setSection} = useSection();
+  const navigate = useNavigate();
+  const pathname = window.location.pathname;
 
   return (
     <div className={classNames(cls.NavigationBar, {}, [className])}>
@@ -27,8 +28,8 @@ export const NavigationBar = ({ className }: INavigationBarProps) => {
         >
           <li className={cls.NavigationBar__item}>
             <div
-              className={classNames(cls.NavigationBar__icon, section === ESection.CHAT && cls.NavigationBar__icon_active)}
-              onClick={() => setSection(ESection.CHAT)}
+              className={classNames(cls.NavigationBar__icon, pathname === RoutePath.chat && cls.NavigationBar__icon_active)}
+              onClick={() => navigate(RoutePath.chat)}
             >
               <svg className={classNames(cls.NavigationBar__svg)}
                 height='20'
@@ -47,11 +48,11 @@ export const NavigationBar = ({ className }: INavigationBarProps) => {
                     y1='0'
                     y2='20.5007'
                   >
-                    <stop stop-color='#33FF00'
-                      stop-opacity='0.25'
+                    <stop stopColor='#33FF00'
+                      stopOpacity='0.25'
                     />
                     <stop offset='1'
-                      stop-color='#0095FF'
+                      stopColor='#0095FF'
                     />
                   </linearGradient>
                 </defs>
@@ -64,8 +65,8 @@ export const NavigationBar = ({ className }: INavigationBarProps) => {
           </li>
           <li className={cls.NavigationBar__item}>
             <div
-              className={classNames(cls.NavigationBar__icon, section === ESection.CARDS && cls.NavigationBar__icon_active)}
-              onClick={() => setSection(ESection.CARDS)}
+              className={classNames(cls.NavigationBar__icon, pathname === RoutePath.cards && cls.NavigationBar__icon_active)}
+              onClick={() => navigate(RoutePath.cards)}
             >
               <svg className={cls.NavigationBar__svg}
                 height='21'
@@ -82,11 +83,11 @@ export const NavigationBar = ({ className }: INavigationBarProps) => {
                     y1='0'
                     y2='20.225'
                   >
-                    <stop stop-color='#33FF00'
-                      stop-opacity='0.25'
+                    <stop stopColor='#33FF00'
+                      stopOpacity='0.25'
                     />
                     <stop offset='1'
-                      stop-color='#0095FF'
+                      stopColor='#0095FF'
                     />
                   </linearGradient>
                 </defs>
@@ -99,8 +100,8 @@ export const NavigationBar = ({ className }: INavigationBarProps) => {
           </li>
           <li className={cls.NavigationBar__item}>
             <div
-              className={classNames(cls.NavigationBar__icon, section === ESection.BOOK && cls.NavigationBar__icon_active)}
-              onClick={() => setSection(ESection.BOOK)}
+              className={classNames(cls.NavigationBar__icon, pathname === RoutePath.book && cls.NavigationBar__icon_active)}
+              onClick={() => navigate(RoutePath.book)}
             >
               <svg className={cls.NavigationBar__svg}
                 height='17'
@@ -117,11 +118,11 @@ export const NavigationBar = ({ className }: INavigationBarProps) => {
                     y1='0'
                     y2='17'
                   >
-                    <stop stop-color='#33FF00'
-                      stop-opacity='0.25'
+                    <stop stopColor='#33FF00'
+                      stopOpacity='0.25'
                     />
                     <stop offset='1'
-                      stop-color='#0095FF'
+                      stopColor='#0095FF'
                     />
                   </linearGradient>
                 </defs>
@@ -134,8 +135,8 @@ export const NavigationBar = ({ className }: INavigationBarProps) => {
           </li>
           <li className={cls.NavigationBar__item}>
             <div
-              className={classNames(cls.NavigationBar__icon, section === ESection.PERSONS && cls.NavigationBar__icon_active)}
-              onClick={() => setSection(ESection.PERSONS)}
+              className={classNames(cls.NavigationBar__icon, pathname === RoutePath.persons && cls.NavigationBar__icon_active)}
+              onClick={() => navigate(RoutePath.persons)}
             >
               <svg className={cls.NavigationBar__svg}
                 height='21'
@@ -162,11 +163,11 @@ export const NavigationBar = ({ className }: INavigationBarProps) => {
                     y1='0'
                     y2='20.5007'
                   >
-                    <stop stop-color='#33FF00'
-                      stop-opacity='0.25'
+                    <stop stopColor='#33FF00'
+                      stopOpacity='0.25'
                     />
                     <stop offset='1'
-                      stop-color='#0095FF'
+                      stopColor='#0095FF'
                     />
                   </linearGradient>
                 </defs>
