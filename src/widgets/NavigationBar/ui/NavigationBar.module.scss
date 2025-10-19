@@ -1,7 +1,7 @@
 .NavigationBar {
   background: var(--color-bg-primary);
   min-width: var(--navbar-width);
- 
+
   &__wrapper {
     display: flex;
     flex-direction: column;
@@ -19,7 +19,7 @@
       color: rgba(var(--color-text-message-primary), 1);
     }
   }
-  
+
   &__list {
     row-gap: 20px;
     display: flex;
@@ -30,7 +30,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    cursor: pointer;
   }
 
   &__button,
@@ -43,10 +42,32 @@
     height: 48px;
     flex-shrink: 0;
     background: var(--color-bg-message-primary);
+    cursor: pointer;
   }
 
   &__icon {
     border-radius: 8px;
+
+    .NavigationBar__svg path {
+      fill: var(--color-svg-inactive);
+
+      &:hover path,
+      &:active path {
+        fill: url(#hoverGradient);
+      }
+    }
+
+    &:hover {
+      .NavigationBar__svg path {
+        fill: url(#hoverGradient);
+      }
+    }
+
+    &:active {
+      .NavigationBar__svg path {
+        fill: url(#hoverGradient);
+      }
+    }
   }
 
   &__span {
