@@ -9,7 +9,4 @@ const basePath = repositoryTitle ? `/${repositoryTitle}/` : '/';
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   base: basePath,
-  optimizeDeps: {
-    disabled: false,
-  }
 });

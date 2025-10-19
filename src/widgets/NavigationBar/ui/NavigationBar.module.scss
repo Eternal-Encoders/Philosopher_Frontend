@@ -68,6 +68,12 @@
         fill: url(#hoverGradient);
       }
     }
+
+    &_active {
+      .NavigationBar__svg path {
+        fill: url(#hoverGradient);
+      }
+    }
   }
 
   &__span {

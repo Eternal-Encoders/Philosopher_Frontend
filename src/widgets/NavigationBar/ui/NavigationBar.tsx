@@ -1,5 +1,7 @@
 //unlimit max-len cause of inline-svg
 /* eslint-disable @stylistic/max-len */
+import { useSection } from 'app/providers/SectionProvider';
+import { ESection } from 'app/providers/SectionProvider/lib/SectionContext';
 import classNames from 'classnames';
 import cls from './NavigationBar.module.scss';
 
@@ -8,7 +10,7 @@ interface INavigationBarProps {
 }
 
 export const NavigationBar = ({ className }: INavigationBarProps) => {
-
+  const {section, setSection} = useSection();
 
   return (
     <div className={classNames(cls.NavigationBar, {}, [className])}>
@@ -24,8 +26,11 @@ export const NavigationBar = ({ className }: INavigationBarProps) => {
           role='list'
         >
           <li className={cls.NavigationBar__item}>
-            <div className={cls.NavigationBar__icon}>
-              <svg className={classNames(cls.NavigationBar__svg, cls.ChatSvg)}
+            <div
+              className={classNames(cls.NavigationBar__icon, section === ESection.CHAT && cls.NavigationBar__icon_active)}
+              onClick={() => setSection(ESection.CHAT)}
+            >
+              <svg className={classNames(cls.NavigationBar__svg)}
                 height='20'
                 viewBox='0 0 20 20'
                 width='20'
@@ -58,8 +63,11 @@ export const NavigationBar = ({ className }: INavigationBarProps) => {
             </span>
           </li>
           <li className={cls.NavigationBar__item}>
-            <div className={cls.NavigationBar__icon}>
-              <svg className={classNames(cls.NavigationBar__svg, cls.MedalSvg)}
+            <div
+              className={classNames(cls.NavigationBar__icon, section === ESection.CARDS && cls.NavigationBar__icon_active)}
+              onClick={() => setSection(ESection.CARDS)}
+            >
+              <svg className={cls.NavigationBar__svg}
                 height='21'
                 viewBox='0 0 18 21'
                 width='18'
@@ -90,8 +98,11 @@ export const NavigationBar = ({ className }: INavigationBarProps) => {
             </span>
           </li>
           <li className={cls.NavigationBar__item}>
-            <div className={cls.NavigationBar__icon}>
-              <svg className={classNames(cls.NavigationBar__svg, cls.BookSvg)}
+            <div
+              className={classNames(cls.NavigationBar__icon, section === ESection.BOOK && cls.NavigationBar__icon_active)}
+              onClick={() => setSection(ESection.BOOK)}
+            >
+              <svg className={cls.NavigationBar__svg}
                 height='17'
                 viewBox='0 0 22 17'
                 width='22'
@@ -122,8 +133,11 @@ export const NavigationBar = ({ className }: INavigationBarProps) => {
             </span>
           </li>
           <li className={cls.NavigationBar__item}>
-            <div className={cls.NavigationBar__icon}>
-              <svg className={classNames(cls.NavigationBar__svg, cls.StarsSvg)}
+            <div
+              className={classNames(cls.NavigationBar__icon, section === ESection.PERSONS && cls.NavigationBar__icon_active)}
+              onClick={() => setSection(ESection.PERSONS)}
+            >
+              <svg className={cls.NavigationBar__svg}
                 height='21'
                 viewBox='0 0 18 21'
                 width='18'
