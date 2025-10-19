@@ -54,7 +54,7 @@ export const NavigationBar = ({ className }: INavigationBarProps) => {
 
             </div>
             <span className={cls.NavigationBar__span}>
-              Карточки
+              Чат
             </span>
           </li>
           <li className={cls.NavigationBar__item}>
