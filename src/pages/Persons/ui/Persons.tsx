@@ -9,6 +9,7 @@ export const Persons = ({ className }: IPersonsProps) => {
   return (
     <div className={classNames(cls.Persons, {}, [className])}>
       PERSONS PAGE
+      IN DEVELOPMENT
     </div>
   );
 };

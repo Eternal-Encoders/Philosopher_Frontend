@@ -9,6 +9,7 @@ export const Cards = ({ className }: ICardsProps) => {
   return (
     <div className={classNames(cls.Cards, {}, [className])}>
       CARDS PAGE
+      IN DEVELOPMENT
     </div>
   );
 };

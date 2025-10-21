@@ -1,1 +1,1 @@
-export { Book } from './ui/Book';
+export { BookAsync as Book } from './ui/Book.async';
