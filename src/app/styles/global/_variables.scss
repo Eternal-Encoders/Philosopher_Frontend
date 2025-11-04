@@ -6,7 +6,7 @@
   --font-family-bold: 'GolosUIWebBold', sans-serif;
 
   //Span
-  --font-span-font-size: 14px;
+  --font-span-font-size: 0.875rem;
   --font-span-line-height: 1.0625rem;
   --font-span-weight: 400;
   --font-span: var(--font-span-weight) var(--font-span-font-size) / var(--font-span-line-height) var(--font-family-regular);
@@ -39,8 +39,8 @@
   //DarkTheme
   --color-bg-primary: #1E1E1E;
   --color-bg-secondary: #212121;
+  --color-bg-tertiary: #2B2B2B;
   --color-border-primary: #575757;
-  --color-bg-message-primary: #2B2B2B;
   --color-text-message-primary: 255, 255, 255;
   --color-svg-inactive: #999999;
   --color-text-inactive: #909090;  
@@ -49,7 +49,7 @@
   --color-bg-primary-inverted: #d3c5c5;
   --color-bg-secondary-inverted: #b8a7a7;
   --color-border-primary-inverted: #575757;
-  --color-bg-message-primary-inverted: #969393;
+  --color-bg-tertiary-inverted: #969393;
   --color-text-message-primary-inverted: #000;
   
   --color-white: #fff;
@@ -60,4 +60,12 @@
   --navbar-margin-right: 8px;
   --app-padding-right: 16px;
   --offset-container: calc(var(--app-padding-left) + var(--navbar-width) + var(--navbar-margin-right) + var(--app-padding-right));
+
+  //Z-index
+  --z-index-messages: 0;
+  --z-index-input: 1;
+  --z-index-card-rotated-background: 0;
+  --z-index-card-background: 1;
+  --z-index-card-outline: 2;
+  --z-index-card-extra-text: 2;
 }

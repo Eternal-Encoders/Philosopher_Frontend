@@ -9,7 +9,13 @@ import { Message } from 'shared/ui/Message/Message';
 import { getUniqId } from 'shared/utils/getUniqId';
 import cls from './Chat.module.scss';
 
-const defaultExtra = {
+interface IExtraDefaultProps {
+  width?: string;
+  inputBottom?: string;
+  height?: string;
+}
+
+const defaultExtra: IExtraDefaultProps = {
   width: '65%',
   inputBottom: '-8px',
   height: '92dvh',
@@ -17,11 +23,7 @@ const defaultExtra = {
 
 interface IChatProps {
   className?: string;
-  extra?: {
-    width?: string;
-    inputBottom?: string;
-    height?: string;
-  };
+  extra?: IExtraDefaultProps;
 }
 
 export const LOCAL_STORAGE_QUESTIONS_KEY = 'QUESTIONS';
@@ -104,6 +106,7 @@ export const Chat = (props: IChatProps) => {
           onSubmit={(value) => handleSubmit(value)}
         >
           <Input
+            autoComplete='off'
             bottom={inputBottom}
             className={cls.Chat__input}
             name='question'

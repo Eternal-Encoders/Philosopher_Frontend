@@ -24,9 +24,7 @@ const Book = ({ className }: IBookProps) => {
   const renderChunk = (index: number) => (
     <Markdown
       components={{
-        // Оптимизируем компоненты для лучшей производительности
         code: ({ className, children, ...props }) => {
-          // Ограничиваем длину кодовых блоков
           const content = String(children);
           if (content.length > 1000) {
             return (

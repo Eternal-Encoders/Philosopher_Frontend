@@ -1,4 +1,3 @@
-// import reactLogo from './assets/react.svg'
 import classNames from 'classnames';
 import { NavigationBar } from 'widgets/NavigationBar';
 import AppRouter from './providers/RouterProvider/ui/AppRouter';
