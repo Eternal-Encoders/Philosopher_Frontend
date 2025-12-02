@@ -1,0 +1,29 @@
+.Carousel {
+  display: flex;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 12px;
+    width: 600px;
+  }
+
+  &__img {
+    display: flex;
+    width: 75px;
+    height: 100px;
+    filter: grayscale(100%);
+    transition: filter 200ms ease-in-out;
+    flex-shrink: 0;
+    cursor: pointer;
+
+    &:hover {
+      filter: grayscale(0%);
+    }
+
+    &_selected {
+      filter: grayscale(0%);
+    }
+  }
+}

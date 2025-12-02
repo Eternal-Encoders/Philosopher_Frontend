@@ -1,0 +1,41 @@
+.Achievement {
+  display: flex;
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__container {
+    display: flex;
+    width: 100%;
+  }
+
+  &__wrapper {
+    display: flex;
+    padding: 12px;
+    border-radius: 8px;
+    background: var(--color-bg-secondary);
+    border: 1px solid #575757;
+    width: 100%;
+  }
+
+  &__img {
+    width: 64px;
+    height: 64px;
+    margin-right: 16px;
+
+    &_notCompleted {
+      filter: grayscale(100%);
+    }
+  }
+
+  &__title {
+    font: var(--font-medium);
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    font: var(--font-regular);
+  }
+}

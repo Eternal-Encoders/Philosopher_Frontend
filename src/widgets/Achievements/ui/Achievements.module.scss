@@ -1,0 +1,33 @@
+.Achievements {
+  display: flex;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font: var(--font-medium-sub-title);
+    margin-bottom: 12px;
+  }
+
+  &__description {
+    font: var(--font-regular);
+    margin-bottom: 16px;
+
+    &_percent {
+      color: var(--color-text-description);
+    }
+  }
+
+  &__progressBar {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+  }
+}

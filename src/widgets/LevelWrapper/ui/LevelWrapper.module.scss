@@ -1,0 +1,102 @@
+.LevelWrapper {
+  display: flex;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    height: 350px;
+    width: 600px;
+    position: relative;
+  }
+
+  &__wrapper {
+    display: flex;
+  }
+
+  &__imgWrapper {
+    display: flex;
+    position: relative;
+
+    &_locked {
+      filter: grayscale(100%);
+      pointer-events: none;
+      user-select: none;
+
+      &::after {
+        content: url('../../../shared/assets/Lock.png');
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: contain;
+        z-index: 10;
+      }
+    }
+  }
+
+  &__img {
+    display: flex;
+    width: 255px;
+    height: 340px;
+  }
+
+  &__left {
+    display: flex;
+    flex: 0 0 255px;
+    margin-right: 24px;
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__levelValue {
+    font: var(--font-regular);
+    margin-bottom: 4px;
+  }
+
+  &__title {
+    font: var(--font-medium-header);
+    margin-bottom: 16px;
+  }
+
+  &__description {
+    font: var(--font-regular);
+    color: var(--color-text-description);
+    margin-bottom: 20px;
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: var(--color-white);
+    width: 160px;
+    height: 42px;
+    background: var(--color-bg-btn-accent);
+    border-radius: 8px;
+
+    &:disabled {
+      filter: grayscale(100%);
+    }
+  }
+
+  &__before,
+  &__after {
+    color: var(--color-white);
+    font-size: 24px;
+    font-weight: 600;
+    position: absolute;
+    top: 50%;
+  }
+
+  &__before {
+    left: calc(-33px - 24px);
+  }
+
+  &__after {
+    right: calc(-33px - 24px);
+  }
+}

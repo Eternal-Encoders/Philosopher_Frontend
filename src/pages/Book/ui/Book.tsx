@@ -157,6 +157,7 @@ const Book = ({ className }: IBookProps) => {
           />
         </div>
         <Chat
+          className={cls.Chat}
           extra={{width: '93%', inputBottom: '0'}}
         />
       </div>
