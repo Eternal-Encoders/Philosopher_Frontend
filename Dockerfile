@@ -3,18 +3,7 @@ WORKDIR /app
 
 COPY . .
 
-COPY ./package.json ./package.json
-COPY ./yarn.lock ./yarn.lock
-
 RUN npm install
-
-COPY ./public ./public
-COPY ./src ./src
-COPY ./tsconfig.json ./tsconfig.json
-COPY ./nginx.conf ./nginx.conf
-COPY ./tsconfig.node.json ./tsconfig.node.json
-COPY ./index.html ./index.html
-COPY ./.env.production ./.env.production
 
 RUN npm run build
 
