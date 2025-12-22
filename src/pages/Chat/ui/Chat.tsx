@@ -8,6 +8,7 @@ import { Input } from 'shared/ui/Input/Input';
 import { Message } from 'shared/ui/Message/Message';
 import { getUniqId } from 'shared/utils/getUniqId';
 import cls from './Chat.module.scss';
+import axios from 'axios';
 
 interface IExtraDefaultProps {
   width?: string;
@@ -57,8 +58,13 @@ export const Chat = (props: IChatProps) => {
     setValue(value);
   }, []);
 
-  const handleSubmit = (form: FormInterface) => {
+  const handleSubmit = async(form: FormInterface) => {
     if (form.question.length <= 0) return;
+    const postData = {
+      prompt: form.question,
+    };
+    const response = await axios.post(`${import.meta.env.VITE_LLM_DOMAIN}/ask`, postData);
+    console.log(response);
     const rawQuestion: IUserQuestion = {
       id: getUniqId(),
       message: form.question,
