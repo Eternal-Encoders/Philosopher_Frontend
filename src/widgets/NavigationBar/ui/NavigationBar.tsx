@@ -65,7 +65,7 @@ export const NavigationBar = ({ className }: INavigationBarProps) => {
           </li>
           <li className={cls.NavigationBar__item}>
             <div
-              className={classNames(cls.NavigationBar__icon, pathname === RoutePath.cards && cls.NavigationBar__icon_active)}
+              className={classNames(cls.NavigationBar__icon, (pathname === RoutePath.cards || pathname === RoutePath.levels) && cls.NavigationBar__icon_active)}
               onClick={() => navigate(RoutePath.levels)}
             >
               <svg className={cls.NavigationBar__svg}

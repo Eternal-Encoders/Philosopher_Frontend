@@ -1,14 +1,22 @@
 import classNames from 'classnames';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { chatData } from 'shared/__mocks__/chat/data';
-import type { IUserQuestion } from 'shared/__mocks__/chat/types';
+import axios from 'axios';
+
 import { AnswerMessage } from 'shared/ui/AnswerMessage/AnswerMessage';
 import { Form, type FormInterface } from 'shared/ui/Form/Form';
 import { Input } from 'shared/ui/Input/Input';
 import { Message } from 'shared/ui/Message/Message';
-import { getUniqId } from 'shared/utils/getUniqId';
+import { getUniqId } from 'shared/utils/getUniqId'; // Убедись, что путь верный
+import { chatData } from 'shared/__mocks__/chat/data';
 import cls from './Chat.module.scss';
-import axios from 'axios';
+
+export interface IChatMessage {
+  id: string | number;
+  message: string;
+  createdAt: Date;
+  updatedAt: Date | null;
+  type: 'user' | 'ai';
+}
 
 interface IExtraDefaultProps {
   width?: string;
@@ -27,7 +35,15 @@ interface IChatProps {
   extra?: IExtraDefaultProps;
 }
 
-export const LOCAL_STORAGE_QUESTIONS_KEY = 'QUESTIONS';
+// Функция для начальной подготовки данных (сливаем моки в один массив и сортируем)
+const getInitialMessages = (): IChatMessage[] => {
+  const initialData: IChatMessage[] = [
+    ...chatData.userQuestions,
+    ...chatData.AIAnswers
+  ];
+  // Сортировка по дате, чтобы сообщения шли по порядку
+  return initialData.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+};
 
 export const Chat = (props: IChatProps) => {
   const { className, extra: {
@@ -36,87 +52,112 @@ export const Chat = (props: IChatProps) => {
     height = defaultExtra.height
   } = defaultExtra } = props;
 
-
   const [value, setValue] = useState<string>('');
-
-  const initialDataFromLocalStorage: string = localStorage.getItem(LOCAL_STORAGE_QUESTIONS_KEY) || '';
-
-  const rawQuestionsFromLocalStorage: IUserQuestion[] = initialDataFromLocalStorage ? JSON.parse(initialDataFromLocalStorage) : [];
-
-  const [rawQuestions, setRawQuestions] = useState<IUserQuestion[]>(rawQuestionsFromLocalStorage);
+  // Используем ОДИН массив для всех сообщений
+  const [messages, setMessages] = useState<IChatMessage[]>(getInitialMessages);
+  const [isLoading, setIsLoading] = useState(false); // Флаг загрузки
 
   const chatRef = useRef<HTMLDivElement>(null);
 
+  // Автоскролл
   useEffect(() => {
-    // Автоскролл вниз при добавлении нового сообщения
     if (chatRef.current) {
-      chatRef.current.scrollTop = chatRef.current.scrollHeight;
+      // Используем behavior: 'smooth' для плавности
+      chatRef.current.scrollTo({ top: chatRef.current.scrollHeight, behavior: 'smooth' });
     }
-  }, [rawQuestions]);
+  }, [messages]);
 
-  const onChange = useCallback((value: string) => {
-    setValue(value);
+  const onChange = useCallback((val: string) => {
+    setValue(val);
   }, []);
 
   const handleSubmit = async(form: FormInterface) => {
-    if (form.question.length <= 0) return;
-    const postData = {
-      prompt: form.question,
-    };
-    const response = await axios.post(`${import.meta.env.VITE_LLM_DOMAIN}/ask`, postData);
-    console.log(response);
-    const rawQuestion: IUserQuestion = {
+    if (!form.question.trim() || isLoading) return; // Защита от пустых и повторных отправок
+
+    const userMessage: IChatMessage = {
       id: getUniqId(),
       message: form.question,
       createdAt: new Date(),
       updatedAt: null,
+      type: 'user',
     };
 
-    setRawQuestions([...rawQuestions, rawQuestion]);
-    localStorage.setItem(LOCAL_STORAGE_QUESTIONS_KEY, JSON.stringify([...rawQuestions, rawQuestion]));
-    setValue('');
+    // 1. Сразу добавляем сообщение пользователя в чат (оптимистичный UI)
+    setMessages((prev) => [...prev, userMessage]);
+    setValue(''); // Очищаем инпут сразу
+    setIsLoading(true); // Включаем режим загрузки
+
+    try {
+      const postData = { prompt: form.question };
+      const response = await axios.post(`${import.meta.env.VITE_LLM_DOMAIN}/ask`, postData);
+
+      const aiMessage: IChatMessage = {
+        id: getUniqId(),
+        message: response.data.response,
+        createdAt: new Date(),
+        updatedAt: null,
+        type: 'ai',
+      };
+
+      // 2. Добавляем ответ от ИИ
+      setMessages((prev) => [...prev, aiMessage]);
+
+    } catch(error) {
+      console.error('Ошибка при запросе:', error);
+      // Тут можно добавить сообщение об ошибке в чат или toast notification
+      const errorMessage: IChatMessage = {
+        id: getUniqId(),
+        message: 'Произошла ошибка при получении ответа. Попробуйте позже.',
+        createdAt: new Date(),
+        updatedAt: null,
+        type: 'ai', // Или отдельный тип 'system'
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false); // Выключаем загрузку в любом случае
+    }
   };
 
   return (
-    <div
-      className={classNames(cls.Chat, {}, [className])}
-    >
-      <div
-        className={cls.Chat__container}
-        style={{width, height}}
+    <div className={classNames(cls.Chat, {}, [className])}>
+      <div className={cls.Chat__container}
+        style={{ width, height }}
       >
-        <div
-          className={cls.Chat__messages}
+        <div className={cls.Chat__messages}
           ref={chatRef}
         >
-          {chatData.userQuestions.map((question) => (
-            <Message
-              key={question.id}
-              value={question.message}
-            />
-          ))}
-          {chatData.AIAnswers.map((answer) => (
-            <AnswerMessage
-              key={answer.id}
-              value={answer.message}
-            />
-          ))}
-          {rawQuestions.map((question) => (
-            <Message
-              key={question.id}
-              value={question.message}
-            />
-          ))}
+          {/* Рендерим единый список сообщений */}
+          {messages.map((item) => {
+            if (item.type === 'user') {
+              return (
+                <Message key={item.id}
+                  value={item.message}
+                />
+              );
+            }
+            return (
+              <AnswerMessage key={item.id}
+                value={item.message}
+              />
+            );
+          })}
+
+          {/* Можно добавить визуальный индикатор, если бот печатает */}
+          {isLoading && (
+            <div className={cls.Chat__typing}>
+              AI печатает...
+            </div>
+          )}
         </div>
-        <Form
-          onSubmit={(value) => handleSubmit(value)}
-        >
+
+        <Form onSubmit={(val) => handleSubmit(val)}>
           <Input
             autoComplete='off'
             bottom={inputBottom}
             className={cls.Chat__input}
+            disabled={isLoading} // Блокируем инпут во время запроса
             name='question'
-            placeholder={'Спросите что-нибудь...'}
+            placeholder={isLoading ? 'Подождите ответ...' : 'Спросите что-нибудь...'}
             type='text'
             value={value}
             onChange={onChange}

@@ -8,6 +8,7 @@ export const chatData: IChatData = {
       message: 'Чем отличается мировоззрение от идеологии?',
       createdAt: new Date(),
       updatedAt: null,
+      type: 'user',
     }
   ],
   AIAnswers: [
@@ -26,6 +27,7 @@ export const chatData: IChatData = {
                 Например: либерализм, социализм, фашизм, консерватизм.`,
       createdAt: new Date(),
       updatedAt: null,
+      type: 'ai',
     }
   ]
 };

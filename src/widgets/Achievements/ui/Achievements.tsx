@@ -24,7 +24,7 @@ export const Achievements = ({ className }: IAchievementsProps) => {
       <div className={cls.Achievements__container}>
         <div className={cls.Achievements__wrapper}>
           <h2 className={cls.Achievements__title}>
-            Достижения
+            Достижения (В работе)
           </h2>
           <span className={cls.Achievements__description}>
             Вы получили

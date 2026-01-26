@@ -1,15 +1,17 @@
 export interface IUserQuestion {
-  id: string;
+  id: string | number;
   message: string;
   createdAt: Date;
   updatedAt: Date | null;
+  type: 'user';
 }
 
 export interface IAIAnswers {
-  id: string;
+  id: string | number;
   message: string;
   createdAt: Date;
   updatedAt: Date | null;
+  type: 'ai';
 }
 
 export interface IChatData {
