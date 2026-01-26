@@ -15,3 +15,7 @@ jobs:
                 docker login --username Roaoch --password ${{ secrets.PACKAGER }} ghcr.io
                 docker build . --tag ghcr.io/eternal-encoders/philosopher-frontend:latest
                 docker push ghcr.io/eternal-encoders/philosopher-frontend:latest
+              env:
+                VITE_API_DOMAIN: ${{ vars.VITE_API_DOMAIN }}
+                VITE_LLM_DOMAIN: ${{ vars.VITE_LLM_DOMAIN }}
+                VITE_PARSER_DOMAIN: ${{ vars.VITE_PARSER_DOMAIN }}
