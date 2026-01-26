@@ -2,7 +2,6 @@
 .vscode
 .dockerignore
 .gitignore
-.env
 .github
 config
 build
