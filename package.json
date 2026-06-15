@@ -9,13 +9,19 @@
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
+    "prepare": "husky",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "prod": "vite preview",
+    "lint-staged": "lint-staged",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "pnpm exec eslint --fix",
+    "*.scss": "pnpm exec stylelint --fix"
   },
   "dependencies": {
     "axios": "^1.13.2",
@@ -41,6 +47,8 @@
     "eslint-plugin-react-refresh": "^0.4.22",
     "eslint-plugin-react-x": "^2.0.6",
     "globals": "^16.4.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.7",
     "only-allow": "^1.2.1",
     "sass": "^1.93.2",
     "sass-embedded": "^1.93.2",
