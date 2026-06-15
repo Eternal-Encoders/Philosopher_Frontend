@@ -55,14 +55,17 @@ jobs:
       - name: Install dependencies
         run: pnpm install --prefer-offline --frozen-lockfile
 
-      - name: Build project
-        run: pnpm build
-
       - name: Linting TypeScript
         run: pnpm lint:ts
 
       - name: Linting SCSS
         run: pnpm lint:scss
+
+      - name: Run tests
+        run: pnpm test:run
+
+      - name: Build project
+        run: pnpm build
 
       - name: Upload production-ready files
         uses: actions/upload-pages-artifact@v3
