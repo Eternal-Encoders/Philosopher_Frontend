@@ -2,6 +2,7 @@
 
 ## Deploy
 - GitHub Pages: <https://eternal-encoders.github.io/Philosopher_Frontend/>
+- Docker Hub: <https://hub.docker.com/repository/docker/daniilmukhortikov/philosopher-frontend/general/>
 
 ## Стек
 - React, Vite, SCSS, TypeScript
