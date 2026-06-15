@@ -2,10 +2,8 @@ name: Build and Deploy to GitHub Pages
 
 on:
   push:
-    branches: 
+    branches:
       - main
-    paths: 
-      - 'src/**'
   pull_request:
     branches:
       - main
